@@ -54,10 +54,14 @@ resource "azuread_application" "vault" {
     }
   }
 
+  identifier_uris = [
+    "api://hashicorp-vault-app-${random_id.app.hex}"
+  ]
 
   prevent_duplicate_names = true
   sign_in_audience        = "AzureADMyOrg"
   owners                  = var.app_owners
+
 
 }
 
